@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visiblr Agency - Google Business Profile Experts Cape Town</title>
+    <meta name="description" content="Expert Google Business Profile (GMB) Management & Optimization in Cape Town. We help local businesses get found on Google Maps. Book a free audit." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+      // Polyfill for process.env to prevent crashes in browser environments (Vercel/Netlify)
+      // if the bundler doesn't replace it automatically.
+      window.process = window.process || { env: {} };
+    </script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'brand-primary': '#05CF78', // Naked-style Green
+              'brand-dark': '#111111',    // Deep Black
+              'brand-gray': '#F3F4F6',    // Light Gray for backgrounds
+              'brand-blue': '#4285F4', // Keep for Google references
+            },
+            borderRadius: {
+              '4xl': '2.5rem',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .naked-pill-input {
+        border-radius: 9999px;
+        transition: all 0.2s ease-in-out;
+      }
+      .naked-pill-input:focus {
+        transform: scale(1.01);
+      }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Visiblr Agency",
+      "image": "",
+      "description": "Expert Google Business Profile (GMB) Management & Optimization in Cape Town.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cape Town",
+        "addressRegion": "Western Cape",
+        "addressCountry": "ZA"
+      },
+      "telephone": "+27768644660",
+      "url": "https://visiblragency.co.za",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ]
+    }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -8,8 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script>
-      // Polyfill for process.env to prevent crashes in browser environments (Vercel/Netlify)
-      // if the bundler doesn't replace it automatically.
+      // Polyfill for process.env to prevent crashes in legacy browser checks
       window.process = window.process || { env: {} };
     </script>
     <script>
@@ -77,14 +76,16 @@
       ]
     }
     </script>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>

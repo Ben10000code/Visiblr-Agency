@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Menu, X, MapPin, ChevronRight, Star, ArrowRight, CheckCircle } from 'lucide-react';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -59,13 +60,10 @@ function App() {
       {/* Hero Section - The "Naked" Green Header */}
       <header className="bg-brand-primary pt-40 pb-32 px-4 relative overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tight text-white leading-[0.95]">
+          <h1 className="text-6xl md:text-8xl font-black mb-12 tracking-tight text-white leading-[0.95]">
             Get Visiblr on <br/>
             your <span className="text-brand-dark">Business.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white font-medium mb-12 max-w-2xl mx-auto leading-relaxed opacity-90">
-            Instant, online visibility at game-changing prices. Stop losing customers to competitors simply because they appear first.
-          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="#audit-tool" onClick={(e) => scrollToSection(e, 'audit-tool')} className="w-full sm:w-auto px-10 py-5 bg-brand-dark text-white font-bold text-lg rounded-full hover:bg-black transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-xl cursor-pointer">
               Audit My Business Free
@@ -205,7 +203,6 @@ function App() {
         </div>
         <div className="max-w-6xl mx-auto px-4 mt-16 pt-8 border-t border-zinc-800 text-xs text-zinc-500 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} Visiblr Agency. Cape Town, South Africa.</p>
-          <p>Built with React & Gemini AI.</p>
         </div>
       </footer>
 

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visiblr Agency - Google Business Profile Experts Cape Town</title>
     <meta name="description" content="Expert Google Business Profile (GMB) Management & Optimization in Cape Town. We help local businesses get found on Google Maps. Book a free audit." />
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script>
-      // Polyfill for process.env to prevent crashes in legacy browser checks
-      window.process = window.process || { env: {} };
-    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
     <script>
       tailwind.config = {
         theme: {
@@ -22,10 +27,24 @@
               'brand-primary': '#05CF78', // Naked-style Green
               'brand-dark': '#111111',    // Deep Black
               'brand-gray': '#F3F4F6',    // Light Gray for backgrounds
-              'brand-blue': '#4285F4', // Keep for Google references
+              'brand-blue': '#4285F4',    // Keep for Google references
             },
             borderRadius: {
               '4xl': '2.5rem',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(100%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
             }
           }
         }
@@ -42,6 +61,20 @@
       }
       .naked-pill-input:focus {
         transform: scale(1.01);
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
       }
     </style>
     <script type="application/ld+json">
@@ -79,19 +112,20 @@
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^18.3.1/",
+    "react": "https://esm.sh/react@^18.3.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.344.0",
+    "@google/genai": "https://esm.sh/@google/genai@latest",
+    "react-dom/": "https://esm.sh/react-dom@^18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@^18.3.1",
     "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
-  <body>
+<body class="min-h-screen bg-white text-zinc-900 font-sans selection:bg-brand-primary selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-  </body>
+</body>
 </html>

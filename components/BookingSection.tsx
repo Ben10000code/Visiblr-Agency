@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Calendar, CheckCircle, Clock, Check } from 'lucide-react';
+import { Calendar, CheckCircle, Check } from 'lucide-react';
 
 export const BookingSection: React.FC = () => {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);

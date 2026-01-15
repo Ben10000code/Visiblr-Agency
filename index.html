@@ -112,12 +112,11 @@
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^18.3.1/",
-    "react": "https://esm.sh/react@^18.3.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.344.0",
-    "@google/genai": "https://esm.sh/@google/genai@latest",
-    "react-dom/": "https://esm.sh/react-dom@^18.3.1/",
-    "react-dom": "https://esm.sh/react-dom@^18.3.1",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
     "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
@@ -125,7 +124,724 @@
 </script>
 </head>
 <body class="min-h-screen bg-white text-zinc-900 font-sans selection:bg-brand-primary selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 w-full z-40 pt-6 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-white text-brand-primary flex items-center justify-center rounded-full shadow-sm">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C7.58 2 4 5.58 4 10c0 4.42 8 14 8 14s8-9.58 8-14c0-4.42-3.58-8-8-8zm0 12L8.5 7h7L12 14z" />
+                    </svg>
+                </div>
+                <span class="font-black text-2xl tracking-tight text-white">
+                    Visiblr<span class="text-white">.</span>
+                </span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 font-semibold text-white/90">
+                <a href="#services" class="hover:text-white transition-colors cursor-pointer">Services</a>
+                <a href="#audit-tool" class="hover:text-white transition-colors cursor-pointer">Free Audit</a>
+                <a href="#blog" class="hover:text-white transition-colors cursor-pointer">Blog</a>
+                <a href="#booking" class="bg-white text-brand-primary px-6 py-3 rounded-full font-bold hover:bg-zinc-100 transition-all hover:scale-105 cursor-pointer">
+                    Book Strategy Call
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-4 right-4 bg-white rounded-3xl p-6 flex flex-col gap-4 shadow-2xl z-50">
+            <a href="#services" class="mobile-link py-3 px-4 hover:bg-gray-50 rounded-xl font-bold cursor-pointer">Services</a>
+            <a href="#audit-tool" class="mobile-link py-3 px-4 hover:bg-gray-50 rounded-xl font-bold cursor-pointer">Free Audit</a>
+            <a href="#booking" class="mobile-link py-3 px-4 bg-brand-primary text-white rounded-full font-bold text-center cursor-pointer">Book Strategy Call</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-brand-primary pt-40 pb-32 px-4 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h1 class="text-6xl md:text-8xl font-black mb-12 tracking-tight text-white leading-[0.95]">
+                Get Visiblr on <br/>
+                your <span class="text-brand-dark">Business.</span>
+            </h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#audit-tool" class="w-full sm:w-auto px-10 py-5 bg-brand-dark text-white font-bold text-lg rounded-full hover:bg-black transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-xl cursor-pointer">
+                    Audit My Business Free
+                </a>
+            </div>
+        </div>
+        <!-- Decorative gradient -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/5 to-transparent"></div>
+    </header>
+
+    <!-- Audit Tool -->
+    <div id="audit-tool" class="-mt-20 relative z-20 mb-20 w-full max-w-4xl mx-auto px-4 scroll-mt-32">
+        <div class="bg-white rounded-4xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-gray-100">
+            
+            <div class="text-center mb-10">
+                <span class="bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6 inline-block">
+                    Free Analysis
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black text-brand-dark mb-4">
+                    Is Your Business Invisible?
+                </h2>
+                <p class="text-zinc-500 max-w-lg mx-auto text-lg">
+                    Enter your details below to unlock your Google Map ranking report.
+                </p>
+            </div>
+
+            <form id="audit-form" class="flex flex-col gap-4 mb-8">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="relative">
+                        <input type="text" id="audit-name" placeholder="Business Name" class="w-full h-16 pl-14 pr-6 bg-gray-50 border-2 border-transparent text-zinc-900 font-bold focus:outline-none focus:border-brand-primary focus:bg-white transition-all naked-pill-input text-lg placeholder:font-medium placeholder:text-zinc-400" required />
+                        <div class="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <input type="text" id="audit-city" placeholder="City / Area" class="w-full h-16 pl-14 pr-6 bg-gray-50 border-2 border-transparent text-zinc-900 font-bold focus:outline-none focus:border-brand-primary focus:bg-white transition-all naked-pill-input text-lg placeholder:font-medium placeholder:text-zinc-400" required />
+                        <div class="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="relative flex-1">
+                        <input type="email" id="audit-email" placeholder="Email Address" class="w-full h-16 pl-14 pr-6 bg-gray-50 border-2 border-transparent text-zinc-900 font-bold focus:outline-none focus:border-brand-primary focus:bg-white transition-all naked-pill-input text-lg placeholder:font-medium placeholder:text-zinc-400" required />
+                        <div class="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <button type="submit" id="audit-submit-btn" class="h-16 bg-brand-dark hover:bg-black text-white font-bold px-10 rounded-full transition-all hover:scale-105 flex items-center justify-center min-w-[200px] shadow-lg text-lg whitespace-nowrap">
+                        <span id="btn-text">Get Free Audit</span>
+                        <i id="btn-loader" data-lucide="loader-2" class="w-6 h-6 animate-spin hidden"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Audit Results Container (Hidden by default) -->
+            <div id="audit-result" class="hidden animate-fade-in border-t border-gray-100 pt-10 mt-6">
+                <div class="bg-green-50 text-green-800 p-4 rounded-xl text-center font-medium mb-8">
+                    Report for <strong id="result-name"></strong> has been generated.
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Score Card -->
+                    <div class="col-span-1 bg-gray-50 rounded-3xl p-8 flex flex-col items-center justify-center text-center">
+                        <div class="text-zinc-500 text-sm font-bold uppercase mb-4 tracking-wide">Visibility Score</div>
+                        <div id="result-score" class="text-7xl font-black mb-4 text-brand-primary">
+                            --
+                        </div>
+                        <div class="text-sm font-bold text-zinc-400">out of 100</div>
+                    </div>
+
+                    <!-- Analysis -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-black text-brand-dark mb-4">Audit Summary</h3>
+                        <p id="result-summary" class="text-zinc-600 mb-8 text-lg leading-relaxed"></p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="bg-red-50 p-6 rounded-2xl">
+                                <h4 class="flex items-center gap-2 font-black text-red-600 mb-4 text-sm uppercase tracking-wide">
+                                    <i data-lucide="alert-circle" class="w-5 h-5"></i> Weaknesses
+                                </h4>
+                                <ul id="result-weaknesses" class="space-y-3"></ul>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-2xl">
+                                <h4 class="flex items-center gap-2 font-black text-green-600 mb-4 text-sm uppercase tracking-wide">
+                                    <i data-lucide="trending-up" class="w-5 h-5"></i> Opportunities
+                                </h4>
+                                <ul id="result-recommendations" class="space-y-3"></ul>
+                            </div>
+                        </div>
+
+                        <div id="result-sources-container" class="mt-8 hidden">
+                            <p class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Sources:</p>
+                            <div id="result-sources" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-10 text-center">
+                    <a href="#booking" class="inline-flex items-center gap-2 text-brand-primary font-black text-lg hover:underline decoration-2 underline-offset-4">
+                        Book a Full Consultation <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Proof -->
+    <div class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm mb-8">People are loving Visiblr</p>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12">
+               <div class="bg-gray-50 px-6 py-3 rounded-full flex items-center gap-2 font-bold text-zinc-600">
+                  <i data-lucide="check-circle" class="text-brand-primary w-5 h-5"></i> Google Partner
+               </div>
+               <div class="bg-gray-50 px-6 py-3 rounded-full flex items-center gap-2 font-bold text-zinc-600">
+                  <i data-lucide="star" class="text-brand-primary w-5 h-5"></i> 5-Star Rated
+               </div>
+               <div class="bg-gray-50 px-6 py-3 rounded-full flex items-center gap-2 font-bold text-zinc-600">
+                  Cape Town Local
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-gray scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-brand-dark mb-6 tracking-tight">
+                    The "Map Pack" Strategy
+                </h2>
+                <p class="text-xl text-zinc-500 max-w-2xl mx-auto">
+                    100% digital management for your local presence.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-10 rounded-4xl hover:shadow-2xl transition-all duration-300 group cursor-pointer hover:-translate-y-2 relative overflow-hidden">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                        <i data-lucide="map" class="w-8 h-8"></i>
+                    </div>
+                    <div class="absolute top-10 right-10">
+                        <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-green-50 text-brand-primary">Once-Off</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-brand-dark mb-4">Profile Creation & Verification</h3>
+                    <p class="text-zinc-500 mb-8 leading-relaxed font-medium">We handle the entire setup and verification process to ensure your business is officially listed.</p>
+                    <div class="border-t border-gray-100 pt-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Google Ownership Claim</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Video Verification Assistance</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Category Configuration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-10 rounded-4xl hover:shadow-2xl transition-all duration-300 group cursor-pointer hover:-translate-y-2 relative overflow-hidden">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                        <i data-lucide="settings" class="w-8 h-8"></i>
+                    </div>
+                    <div class="absolute top-10 right-10">
+                        <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-green-50 text-brand-primary">Once-Off</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-brand-dark mb-4">Profile Optimisation</h3>
+                    <p class="text-zinc-500 mb-8 leading-relaxed font-medium">A comprehensive audit and update to maximize your visibility and appeal to local customers.</p>
+                    <div class="border-t border-gray-100 pt-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> SEO Keyword Integration</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Photo Gallery Curation</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Service Area Refinement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-10 rounded-4xl hover:shadow-2xl transition-all duration-300 group cursor-pointer hover:-translate-y-2 relative overflow-hidden">
+                    <div class="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                    </div>
+                    <div class="absolute top-10 right-10">
+                        <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 text-brand-blue">Monthly</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-brand-dark mb-4">Monthly Profile Management</h3>
+                    <p class="text-zinc-500 mb-8 leading-relaxed font-medium">Ongoing active management to maintain rankings, fight spam, and engage with reviews.</p>
+                    <div class="border-t border-gray-100 pt-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Weekly GMB Posts</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Review Response Management</li>
+                            <li class="flex items-center text-sm font-bold text-zinc-600"><i data-lucide="check" class="w-5 h-5 text-brand-primary mr-3"></i> Performance Reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 bg-white scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-brand-dark text-white rounded-4xl p-8 md:p-20 relative overflow-hidden shadow-2xl">
+                <!-- Decorative Blob -->
+                <div class="absolute -left-20 -bottom-40 w-96 h-96 bg-zinc-800 rounded-full opacity-30 blur-3xl"></div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                    <div>
+                        <span class="text-brand-primary font-bold tracking-widest uppercase text-sm mb-6 block">Ready to start?</span>
+                        <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                            Stop Losing Customers to Competitors.
+                        </h2>
+                        <p class="text-zinc-400 mb-10 text-xl leading-relaxed">
+                            Book a free 15-minute "Local Visibility Audit". We'll show you exactly why you aren't ranking #1.
+                        </p>
+                        
+                        <ul class="space-y-6">
+                            <li class="flex items-center gap-4">
+                                <div class="bg-zinc-800 p-2 rounded-full"><i data-lucide="check-circle" class="text-brand-primary w-6 h-6"></i></div>
+                                <span class="font-bold text-lg">No obligation, 100% free insight</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="bg-zinc-800 p-2 rounded-full"><i data-lucide="check-circle" class="text-brand-primary w-6 h-6"></i></div>
+                                <span class="font-bold text-lg">Actionable steps you can do yourself</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <div class="bg-zinc-800 p-2 rounded-full"><i data-lucide="check-circle" class="text-brand-primary w-6 h-6"></i></div>
+                                <span class="font-bold text-lg">South African market expertise</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white text-zinc-900 p-8 rounded-3xl shadow-xl transform md:rotate-2 hover:rotate-0 transition-all duration-500">
+                        
+                        <!-- Booking Form Container -->
+                        <div id="booking-container">
+                             <div class="flex items-center justify-between mb-8 border-b border-gray-100 pb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center">
+                                        <span class="font-black text-brand-primary text-xl">W</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-black text-lg">William (Visiblr)</div>
+                                        <div class="text-sm text-zinc-500 font-medium">15 min Meeting</div>
+                                    </div>
+                                </div>
+                                <i data-lucide="calendar" class="text-zinc-300 w-6 h-6"></i>
+                            </div>
+
+                            <div class="text-center py-2">
+                                <p class="text-sm font-bold text-zinc-400 mb-6 uppercase tracking-wider">Select a time for tomorrow</p>
+                                <div class="grid grid-cols-3 gap-3 mb-8" id="time-slots">
+                                    <button class="time-slot py-3 px-2 border-2 border-gray-100 rounded-xl text-sm font-bold transition-all hover:border-brand-primary hover:text-brand-primary" data-time="09:00">09:00</button>
+                                    <button class="time-slot py-3 px-2 border-2 border-gray-100 rounded-xl text-sm font-bold transition-all hover:border-brand-primary hover:text-brand-primary" data-time="11:30">11:30</button>
+                                    <button class="time-slot py-3 px-2 border-2 border-gray-100 rounded-xl text-sm font-bold transition-all hover:border-brand-primary hover:text-brand-primary" data-time="14:00">14:00</button>
+                                </div>
+                                <button id="booking-confirm-btn" disabled class="w-full font-black py-5 rounded-full transition-all shadow-lg text-lg flex items-center justify-center gap-2 bg-gray-100 text-gray-400 cursor-not-allowed">
+                                    Confirm Booking
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Success Message (Hidden) -->
+                        <div id="booking-success" class="hidden py-12 text-center animate-fade-in">
+                            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i data-lucide="check" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-black mb-2">You're Booked!</h3>
+                            <p class="text-zinc-500 font-medium mb-8">
+                                Calendar invite sent for <strong id="booked-time">tomorrow</strong>.
+                            </p>
+                            <button id="book-another" class="text-brand-primary font-bold hover:underline">
+                                Book another time
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Problem/Solution -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-5xl md:text-6xl font-black text-center mb-16 leading-tight">
+                Get up to <span class="text-brand-primary">3x more calls</span><br/>
+                for claiming your spot.
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Map Viz (HTML/CSS Re-creation) -->
+                <div class="bg-gray-100 rounded-4xl p-8 aspect-square flex flex-col relative overflow-hidden shadow-inner">
+                    <!-- Search Bar -->
+                    <div class="bg-white rounded-full p-4 shadow-sm flex items-center gap-3 mb-6 relative z-10">
+                        <div class="w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full w-32"></div>
+                        <i data-lucide="more-vertical" class="w-5 h-5 text-gray-300 ml-auto"></i>
+                    </div>
+
+                    <!-- Map Area -->
+                    <div class="flex-1 relative">
+                        <!-- Roads -->
+                        <div class="absolute top-1/4 left-0 w-full h-8 bg-white/50 -rotate-6 transform scale-125"></div>
+                        <div class="absolute top-0 right-1/4 h-full w-8 bg-white/50 rotate-12 transform scale-125"></div>
+
+                        <!-- Competitor Pins -->
+                        <div class="absolute top-10 left-10 animate-bounce" style="animation-duration: 3s">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-20 right-10 animate-bounce" style="animation-duration: 4s">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <!-- Hero Pin -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                            <div class="relative group">
+                                <div class="absolute -top-4 -right-4 bg-brand-dark text-white text-xs font-black px-2 py-1 rounded-lg z-30 shadow-lg scale-110">
+                                    #1 RANK
+                                </div>
+                                <div class="w-16 h-16 bg-brand-primary rounded-full border-4 border-white shadow-2xl flex items-center justify-center text-white transform transition-transform hover:scale-110 cursor-pointer">
+                                    <i data-lucide="map-pin" class="w-8 h-8 fill-current"></i>
+                                </div>
+                                <div class="absolute top-0 left-0 w-16 h-16 bg-brand-primary rounded-full animate-ping opacity-20 -z-10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <p class="text-2xl font-medium text-zinc-600 leading-relaxed">
+                        46% of all Google searches are seeking local information. If your business doesn't appear in the top 3 map results, you are invisible.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl">
+                             <div class="w-10 h-10 rounded-full bg-brand-primary/20 text-brand-primary flex items-center justify-center">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                             </div>
+                             <span class="font-bold text-lg">Optimize for "Near Me" searches</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl">
+                             <div class="w-10 h-10 rounded-full bg-brand-primary/20 text-brand-primary flex items-center justify-center">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                             </div>
+                             <span class="font-bold text-lg">Increase phone calls & direction requests</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-24 bg-brand-gray scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-end justify-between mb-12">
+                <h2 class="text-4xl font-black">Want to know more <span class="text-brand-primary">about SEO?</span></h2>
+                <a href="#blog" class="hidden md:flex items-center gap-2 font-bold border-2 border-zinc-900 rounded-full px-6 py-2 hover:bg-zinc-900 hover:text-white transition-all cursor-pointer">
+                    See all articles <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Blog 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer border border-transparent hover:border-brand-primary">
+                    <span class="inline-block px-3 py-1 bg-green-50 text-brand-primary text-xs font-bold uppercase tracking-wide mb-4 rounded-full">Reputation</span>
+                    <h3 class="text-xl font-bold mb-6 group-hover:text-brand-primary transition-colors">How to get more 5-star reviews (Ethically)</h3>
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-brand-primary group-hover:text-white transition-colors ml-auto">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                 <!-- Blog 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer border border-transparent hover:border-brand-primary">
+                    <span class="inline-block px-3 py-1 bg-green-50 text-brand-primary text-xs font-bold uppercase tracking-wide mb-4 rounded-full">Troubleshooting</span>
+                    <h3 class="text-xl font-bold mb-6 group-hover:text-brand-primary transition-colors">Why your GMB listing got suspended</h3>
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-brand-primary group-hover:text-white transition-colors ml-auto">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                 <!-- Blog 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer border border-transparent hover:border-brand-primary">
+                    <span class="inline-block px-3 py-1 bg-green-50 text-brand-primary text-xs font-bold uppercase tracking-wide mb-4 rounded-full">Optimization</span>
+                    <h3 class="text-xl font-bold mb-6 group-hover:text-brand-primary transition-colors">The hidden power of GMB Posts</h3>
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 group-hover:bg-brand-primary group-hover:text-white transition-colors ml-auto">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-20 rounded-t-4xl mt-12 mx-2">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-12 text-sm">
+            <div class="col-span-2">
+                 <div class="flex items-center gap-2 mb-6">
+                    <div class="w-10 h-10 bg-white text-brand-dark flex items-center justify-center rounded-full shadow-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C7.58 2 4 5.58 4 10c0 4.42 8 14 8 14s8-9.58 8-14c0-4.42-3.58-8-8-8zm0 12L8.5 7h7L12 14z" />
+                        </svg>
+                    </div>
+                    <span class="font-black text-2xl tracking-tight text-white">
+                        Visiblr<span class="text-brand-primary">.</span>
+                    </span>
+                </div>
+                <p class="text-zinc-400 max-w-sm text-lg leading-relaxed mb-8">
+                    Helping South African businesses get found, get trusted, and get booked.
+                </p>
+                <div class="flex flex-col gap-2 text-zinc-400 font-medium">
+                    <a href="mailto:hello@visiblragency.co.za" class="hover:text-brand-primary transition-colors">hello@visiblragency.co.za</a>
+                    <span>Cape Town, South Africa</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-white text-lg">Services</h4>
+                <ul class="space-y-4 text-zinc-400 font-medium">
+                    <li><a href="#services" class="hover:text-brand-primary transition-colors">GBP Creation</a></li>
+                    <li><a href="#services" class="hover:text-brand-primary transition-colors">Monthly Management</a></li>
+                    <li><a href="#services" class="hover:text-brand-primary transition-colors">Optimisation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 text-white text-lg">Legal</h4>
+                <ul class="space-y-4 text-zinc-400 font-medium">
+                    <li><a href="#" class="hover:text-brand-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-brand-primary transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-16 pt-8 border-t border-zinc-800 text-xs text-zinc-500 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2024 Visiblr Agency. Cape Town, South Africa.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/27768644660?text=Hi%20Visiblr,%20I'm%20interested%20in%20a%20Google%20Map%20audit."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:bg-[#20bd5a] transition-all duration-300 hover:scale-105"
+       aria-label="Chat on WhatsApp">
+       <i data-lucide="message-circle" class="w-6 h-6"></i>
+       <span class="font-semibold hidden sm:inline">Chat with an Expert</span>
+    </a>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 animate-slide-up">
+        <div class="max-w-4xl mx-auto bg-brand-dark text-white rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-800">
+            <div class="text-sm md:text-base font-medium text-zinc-300">
+                <span class="font-bold text-white">We respect your privacy.</span> We use cookies to ensure Visiblr works perfectly for you and to analyze our traffic (POPIA Compliant).
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <button id="cookie-decline" class="flex-1 md:flex-none px-6 py-3 font-bold text-zinc-400 hover:text-white transition-colors">Decline</button>
+                <button id="cookie-accept" class="flex-1 md:flex-none px-8 py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-green-600 transition-all shadow-lg whitespace-nowrap">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN LOGIC -->
+    <script type="module">
+        import { GoogleGenAI, Type } from "https://esm.sh/@google/genai@latest";
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- CONSTANTS ---
+        // Note: process.env.API_KEY is replaced during build or accessible in certain environments
+        const API_KEY = "YOUR_API_KEY"; 
+
+        // --- MOBILE MENU LOGIC ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- COOKIE BANNER LOGIC ---
+        const cookieBanner = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('visiblr_consent')) {
+            setTimeout(() => {
+                cookieBanner.classList.remove('hidden');
+            }, 1500);
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('visiblr_consent', 'true');
+            cookieBanner.classList.add('hidden');
+        });
+        
+        document.getElementById('cookie-decline').addEventListener('click', () => {
+             cookieBanner.classList.add('hidden');
+        });
+
+
+        // --- BOOKING LOGIC ---
+        const timeSlots = document.querySelectorAll('.time-slot');
+        const confirmBtn = document.getElementById('booking-confirm-btn');
+        const bookingContainer = document.getElementById('booking-container');
+        const successContainer = document.getElementById('booking-success');
+        const bookedTimeDisplay = document.getElementById('booked-time');
+        const bookAnotherBtn = document.getElementById('book-another');
+        let selectedTime = null;
+
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                // Reset styling
+                timeSlots.forEach(s => {
+                    s.classList.remove('border-brand-primary', 'bg-brand-primary/5', 'text-brand-primary');
+                    s.classList.add('border-gray-100');
+                });
+                
+                // Select new
+                slot.classList.remove('border-gray-100');
+                slot.classList.add('border-brand-primary', 'bg-brand-primary/5', 'text-brand-primary');
+                
+                selectedTime = slot.dataset.time;
+                confirmBtn.disabled = false;
+                confirmBtn.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
+                confirmBtn.classList.add('bg-brand-primary', 'text-white', 'hover:bg-green-600', 'hover:scale-105');
+            });
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            if(!selectedTime) return;
+            // Fake API delay
+            confirmBtn.innerText = "Booking...";
+            setTimeout(() => {
+                bookedTimeDisplay.innerText = `tomorrow at ${selectedTime}`;
+                bookingContainer.classList.add('hidden');
+                successContainer.classList.remove('hidden');
+            }, 800);
+        });
+
+        bookAnotherBtn.addEventListener('click', () => {
+            successContainer.classList.add('hidden');
+            bookingContainer.classList.remove('hidden');
+            confirmBtn.innerText = "Confirm Booking";
+            confirmBtn.disabled = true;
+            confirmBtn.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
+            confirmBtn.classList.remove('bg-brand-primary', 'text-white', 'hover:bg-green-600', 'hover:scale-105');
+            selectedTime = null;
+            timeSlots.forEach(s => {
+                s.classList.remove('border-brand-primary', 'bg-brand-primary/5', 'text-brand-primary');
+                s.classList.add('border-gray-100');
+            });
+        });
+
+        // --- AUDIT TOOL LOGIC ---
+        const auditForm = document.getElementById('audit-form');
+        const auditSubmitBtn = document.getElementById('audit-submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnLoader = document.getElementById('btn-loader');
+        const resultContainer = document.getElementById('audit-result');
+
+        auditForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const businessName = document.getElementById('audit-name').value;
+            const city = document.getElementById('audit-city').value;
+            const email = document.getElementById('audit-email').value;
+
+            if(!businessName || !city || !email) return;
+
+            // Loading state
+            btnText.innerText = "Analyzing...";
+            btnLoader.classList.remove('hidden');
+            auditSubmitBtn.disabled = true;
+            resultContainer.classList.add('hidden');
+
+            try {
+                // Initialize AI
+                const ai = new GoogleGenAI({ apiKey: API_KEY });
+                
+                const prompt = `
+                    Perform a simulated SEO and Google Business Profile visibility audit for the business "${businessName}" located in "${city}" (Category: Local Business).
+                    Return valid JSON with:
+                    {
+                      "visibilityScore": number (0-100),
+                      "summary": "2-sentence summary",
+                      "strengths": ["string", "string"],
+                      "weaknesses": ["string", "string"],
+                      "recommendations": ["string", "string"]
+                    }
+                `;
+
+                // If API Key is default, mock the response to prevent crashing
+                let data;
+                if(API_KEY === "YOUR_API_KEY") {
+                    console.warn("Using Mock Data - No API Key Provided");
+                    await new Promise(r => setTimeout(r, 2000)); // Fake delay
+                    data = {
+                        visibilityScore: 42,
+                        summary: "We couldn't connect to the AI (Missing API Key), but here is a sample report based on typical local business profiles.",
+                        strengths: ["Local presence exists", "Potential for growth"],
+                        weaknesses: ["Likely missing photos", "Low review count", "Unverified profile"],
+                        recommendations: ["Claim your Google Profile", "Add 5+ high quality photos", "Request reviews from past clients"]
+                    };
+                } else {
+                    const response = await ai.models.generateContent({
+                        model: "gemini-3-pro-preview",
+                        contents: prompt,
+                        config: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    visibilityScore: { type: Type.INTEGER },
+                                    summary: { type: Type.STRING },
+                                    strengths: { type: Type.ARRAY, items: { type: Type.STRING } },
+                                    weaknesses: { type: Type.ARRAY, items: { type: Type.STRING } },
+                                    recommendations: { type: Type.ARRAY, items: { type: Type.STRING } },
+                                },
+                            }
+                        }
+                    });
+                    const text = response.text;
+                    data = JSON.parse(text);
+                }
+
+                // Render Data
+                document.getElementById('result-name').innerText = businessName;
+                document.getElementById('result-score').innerText = data.visibilityScore;
+                document.getElementById('result-summary').innerText = data.summary;
+                
+                // Colorize Score
+                const scoreEl = document.getElementById('result-score');
+                scoreEl.className = `text-7xl font-black mb-4 ${
+                    data.visibilityScore > 80 ? 'text-brand-primary' : 
+                    data.visibilityScore > 50 ? 'text-yellow-500' : 'text-red-500'
+                }`;
+
+                // Render Lists
+                const fillList = (id, items, colorClass) => {
+                    const ul = document.getElementById(id);
+                    ul.innerHTML = '';
+                    items.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = "text-sm font-medium text-zinc-700 flex items-start gap-2";
+                        li.innerHTML = `<span class="mt-1.5 w-1.5 h-1.5 rounded-full ${colorClass} shrink-0"></span>${item}`;
+                        ul.appendChild(li);
+                    });
+                };
+
+                fillList('result-weaknesses', data.weaknesses, 'bg-red-400');
+                fillList('result-recommendations', data.recommendations, 'bg-green-400');
+
+                // Show Results
+                resultContainer.classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Audit Error:", error);
+                alert("Something went wrong with the analysis. Please check your connection and API Key.");
+            } finally {
+                btnText.innerText = "Get Free Audit";
+                btnLoader.classList.add('hidden');
+                auditSubmitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>

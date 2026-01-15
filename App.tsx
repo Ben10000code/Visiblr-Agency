@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, MapPin, ChevronRight, Star, ArrowRight, CheckCircle } from 'lucide-react';
+import { Menu, X, ChevronRight, Star, ArrowRight, CheckCircle } from 'lucide-react';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { AuditTool } from './components/AuditTool';
 import { Services } from './components/Services';

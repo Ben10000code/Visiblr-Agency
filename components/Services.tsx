@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Map, Star, BarChart3, Check, Settings, ShieldCheck } from 'lucide-react';
+import { Map, BarChart3, Check, Settings } from 'lucide-react';
 
 const services = [
   {
